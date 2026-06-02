@@ -1,0 +1,14 @@
+{
+  "name": "yacht-club",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c blue,green \"npm run start:dev --prefix server\" \"npx wait-on tcp:127.0.0.1:4000 && npm run dev --prefix client\"",
+    "build": "npm run build --prefix server && npm run build --prefix client",
+    "start": "concurrently -n api,web \"npm run start:prod --prefix server\" \"npm run start --prefix client\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "wait-on": "^8.0.1"
+  }
+}
